@@ -74,12 +74,12 @@ function AssessmentsPage() {
         thigh_cm: numeric(form.thigh_cm),
         notes: form.notes || null,
       };
-      const { error } = await supabase.from("assessments").insert(payload);
+      const { error } = await (supabase as any).from("assessments").insert(payload);
       if (error) throw error;
 
       // First assessment: capture as baseline if profile is empty
       if (isFirst) {
-        await supabase.from("profiles").update({
+        await (supabase as any).from("profiles").update({
           initial_weight: payload.weight,
           initial_body_fat: payload.body_fat_pct,
           initial_lean_mass: payload.lean_mass,
@@ -102,7 +102,7 @@ function AssessmentsPage() {
 
   const remove = async (id: string) => {
     if (!confirm("Excluir esta avaliação?")) return;
-    const { error } = await supabase.from("assessments").delete().eq("id", id);
+    const { error } = await (supabase as any).from("assessments").delete().eq("id", id);
     if (error) return toast.error(error.message);
     toast.success("Removida");
     qc.invalidateQueries({ queryKey: ["assessments"] });

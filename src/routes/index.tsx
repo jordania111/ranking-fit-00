@@ -48,8 +48,8 @@ function RankingPage() {
     queryKey: ["ranking-data"],
     queryFn: async () => {
       const [{ data: profiles }, { data: assessments }] = await Promise.all([
-        supabase.from("profiles").select("id, full_name, email, avatar_url, height_cm, initial_weight, initial_body_fat, initial_lean_mass, start_date"),
-        supabase.from("assessments").select("id, user_id, assessment_date, weight, body_fat_pct, lean_mass, waist_cm, hip_cm, arm_cm, thigh_cm, notes, created_at"),
+        (supabase as any).from("profiles").select("id, full_name, email, avatar_url, height_cm, initial_weight, initial_body_fat, initial_lean_mass, start_date"),
+        (supabase as any).from("assessments").select("id, user_id, assessment_date, weight, body_fat_pct, lean_mass, waist_cm, hip_cm, arm_cm, thigh_cm, notes, created_at"),
       ]);
       return {
         profiles: (profiles ?? []) as Profile[],

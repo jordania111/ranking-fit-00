@@ -26,7 +26,7 @@ function ProfilePage() {
     enabled: !!userId,
     queryKey: ["profile", userId],
     queryFn: async () => {
-      const { data } = await supabase.from("profiles").select("*").eq("id", userId!).maybeSingle();
+      const { data } = await (supabase as any).from("profiles").select("*").eq("id", userId!).maybeSingle();
       return data as (Profile & { birth_date?: string | null; gender?: string | null }) | null;
     },
   });
@@ -39,7 +39,7 @@ function ProfilePage() {
     e.preventDefault();
     if (!userId) return;
     setSaving(true);
-    const { error } = await supabase.from("profiles").update({
+    const { error } = await (supabase as any).from("profiles").update({
       full_name: form.full_name ?? "",
       height_cm: form.height_cm ? Number(form.height_cm) : null,
       birth_date: form.birth_date || null,
@@ -66,7 +66,7 @@ function ProfilePage() {
       const { error: upErr } = await supabase.storage.from("avatars").upload(path, file, { upsert: true });
       if (upErr) throw upErr;
       const { data } = supabase.storage.from("avatars").getPublicUrl(path);
-      const { error } = await supabase.from("profiles").update({ avatar_url: data.publicUrl }).eq("id", userId);
+      const { error } = await (supabase as any).from("profiles").update({ avatar_url: data.publicUrl }).eq("id", userId);
       if (error) throw error;
       toast.success("Foto atualizada");
       qc.invalidateQueries({ queryKey: ["profile"] });

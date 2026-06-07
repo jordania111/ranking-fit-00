@@ -21,8 +21,8 @@ function Dashboard() {
     queryKey: ["dashboard", userId],
     queryFn: async () => {
       const [{ data: profile }, { data: assessments }] = await Promise.all([
-        supabase.from("profiles").select("*").eq("id", userId!).maybeSingle(),
-        supabase.from("assessments").select("*").eq("user_id", userId!).order("assessment_date", { ascending: true }),
+        (supabase as any).from("profiles").select("*").eq("id", userId!).maybeSingle(),
+        (supabase as any).from("assessments").select("*").eq("user_id", userId!).order("assessment_date", { ascending: true }),
       ]);
       return {
         profile: profile as Profile | null,

@@ -30,7 +30,7 @@ function PhotosPage() {
     enabled: !!userId,
     queryKey: ["photos", userId],
     queryFn: async () => {
-      const { data } = await supabase.from("progress_photos").select("*").eq("user_id", userId!).order("taken_at", { ascending: true });
+      const { data } = await (supabase as any).from("progress_photos").select("*").eq("user_id", userId!).order("taken_at", { ascending: true });
       return (data ?? []) as Photo[];
     },
   });
@@ -47,7 +47,7 @@ function PhotosPage() {
       const { error: upErr } = await supabase.storage.from("progress").upload(path, file);
       if (upErr) throw upErr;
       const { data } = supabase.storage.from("progress").getPublicUrl(path);
-      const { error } = await supabase.from("progress_photos").insert({
+      const { error } = await (supabase as any).from("progress_photos").insert({
         user_id: userId, photo_type: type, photo_url: data.publicUrl,
       });
       if (error) throw error;
@@ -60,7 +60,7 @@ function PhotosPage() {
 
   const remove = async (p: Photo) => {
     if (!confirm("Excluir foto?")) return;
-    const { error } = await supabase.from("progress_photos").delete().eq("id", p.id);
+    const { error } = await (supabase as any).from("progress_photos").delete().eq("id", p.id);
     if (error) return toast.error(error.message);
     toast.success("Removida");
     qc.invalidateQueries({ queryKey: ["photos"] });
