@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "entries": [
+    {
+      "schemaVersion": 2,
+      "appServerProtocolVersion": 2,
+      "appVersion": "26.602.40724",
+      "channel": "prod",
+      "cliVersion": "26.602.40724",
+      "entryId": "codex-runtime-5bec7c089b863d0e59d72c65e2dcb7dd",
+      "extensionBuildChannels": [
+        "prod"
+      ],
+      "extensionIds": [
+        "hehggadaopoacecdllhhajmbjkdcmajg"
+      ],
+      "installId": "codex-install-20237360e564ba542856c7132d619b66",
+      "nativeHostNames": [
+        "com.openai.codexextension"
+      ],
+      "nativeHostProtocolVersion": 2,
+      "nativeHostVersion": "26.602.40724",
+      "paths": {
+        "browserClientPath": "C:\\Users\\jorda\\.codex\\plugins\\cache\\openai-bundled\\chrome\\latest\\scripts\\browser-client.mjs",
+        "codexCliPath": "C:\\Users\\jorda\\AppData\\Local\\OpenAI\\Codex\\bin\\fb2111b91430cb17\\codex.exe",
+        "codexHome": "C:\\Users\\jorda\\.codex",
+        "extensionHostPath": "C:\\Users\\jorda\\.codex\\plugins\\cache\\openai-bundled\\chrome\\latest\\extension-host\\windows\\x64\\extension-host.exe",
+        "nodePath": "C:\\Users\\jorda\\AppData\\Local\\OpenAI\\Codex\\bin\\5b9024f90663758b\\node.exe",
+        "nodeReplPath": "C:\\Users\\jorda\\AppData\\Local\\OpenAI\\Codex\\bin\\34ab3e1324cc55b5\\node_repl.exe",
+        "resourcesPath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.602.4764.0_x64__2p2nqsd0c76g0\\app\\resources"
+      },
+      "presence": {
+        "lastSeenAt": "2026-06-07T19:18:04.447Z",
+        "pid": 2240,
+        "startedAt": "2026-06-07T19:18:04.447Z"
+      },
+      "proxyHost": "127.0.0.1",
+      "proxyPort": 0,
+      "updatedAt": "2026-06-07T19:18:04.447Z"
+    }
+  ]
+}
